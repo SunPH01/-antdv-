@@ -1,10 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <Main />
 </template>
+
+<script lang="ts">
+import { defineComponent, onMounted } from "vue";
+import Main from "./layout/Main.vue";
+import { useTheme } from "@/utils/theme/useTheme";
+import { useAppStore } from "@/store/modules/app";
+
+export default defineComponent({
+  components: { Main },
+  setup() {
+    const appStore = useAppStore();
+    onMounted(() => {
+      useTheme(appStore.getThemeName);
+    });
+  },
+});
+</script>
 
 <style lang="less">
 #app {

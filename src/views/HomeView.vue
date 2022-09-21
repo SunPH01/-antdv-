@@ -11,10 +11,10 @@
     </template>
   </excel-import>
 </template>
-<script>
-import ExcelImport from "@/components/ExcelImport.vue";
+<script lang="ts">
+// import ExcelImport from "@/components/ExcelImport.vue";
 export default {
-  components: { ExcelImport },
+  // components: { ExcelImport },
   methods: {
     setExportData() {
       return {
@@ -26,7 +26,7 @@ export default {
         excelName: "导出",
       };
     },
-    getImportData(data) {
+    getImportData(data: any) {
       console.log(data);
     },
   },

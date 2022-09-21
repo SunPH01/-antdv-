@@ -6,7 +6,11 @@
           <Icon :name="menu.icon" />
         </template>
         <template #title>{{ menu.name }}</template>
-        <a-menu-item v-for="item in menu.children" :key="item.value">
+        <a-menu-item
+          v-for="item in menu.children"
+          :key="item.value"
+          @click="handleMenuClick(item)"
+        >
           {{ item.name }}
         </a-menu-item>
       </a-sub-menu>
@@ -16,11 +20,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Menu from "@/assets/file/menu";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
+    const router = useRouter();
+    const handleMenuClick = (menu: any) => {
+      menu.path && router.push(menu.path);
+    };
     return {
       Menu,
+      handleMenuClick,
     };
   },
 });

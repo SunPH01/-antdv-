@@ -16,3 +16,17 @@ export default defineComponent({
   components: { Header, Menu },
 });
 </script>
+<style lang="less" scoped>
+.main-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-body {
+  flex: 1;
+  display: flex;
+  .main-content {
+    flex: 1;
+  }
+}
+</style>

@@ -5,7 +5,8 @@ import { installGlobComp } from "@/components";
 import { setupStore } from "@/store/index";
 import Antd from "ant-design-vue";
 import "@purge-icons/generated";
-import "ant-design-vue/dist/antd.css";
+// import "ant-design-vue/dist/antd.css";
+import "ant-design-vue/dist/antd.variable.min.css";
 import "@/design/index.less";
 
 async function bootstrap() {

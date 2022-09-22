@@ -1,6 +1,11 @@
 const { defineConfig } = require("@vue/cli-service");
 const { generateModifyVars } = require("./build");
 const { PurgeIcons } = require("purge-icons-webpack-plugin");
+const path = require("path");
+
+const resolve = (dir) => {
+  return path.join(__dirname, dir);
+};
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -11,6 +16,7 @@ module.exports = defineConfig({
       .tap((args) => {
         return args;
       });
+    config.module.rule("svg").exclude.add(resolve("src/assets/svg")).end();
     config.module
       .rule("icons")
       .test(/\.svg$/)

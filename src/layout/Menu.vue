@@ -1,7 +1,7 @@
 <template>
   <div class="aside-menu">
-    <a-menu mode="inline" theme="dark">
-      <a-sub-menu v-for="menu in Menu" :key="menu.value">
+    <a-menu mode="inline" theme="light">
+      <a-sub-menu v-for="menu in currentMenu.children" :key="menu.value">
         <template #icon>
           <Icon :name="menu.icon" />
         </template>
@@ -18,18 +18,20 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-import Menu from "@/assets/file/menu";
+import { defineComponent, computed } from "vue";
+import { useAppStore } from "@/store/modules/app";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
     const router = useRouter();
+    const appStore = useAppStore();
+    const currentMenu = computed(() => appStore.getCurrentMenu || {});
     const handleMenuClick = (menu: any) => {
       menu.path && router.push(menu.path);
     };
     return {
-      Menu,
+      currentMenu,
       handleMenuClick,
     };
   },
@@ -69,6 +71,16 @@ export default defineComponent({
         .ant-menu-item-selected {
           background-color: @aside-menu-active-bg !important;
         }
+      }
+    }
+    &-item-icon,
+    &-title-content {
+      color: @aside-menu-text-color;
+    }
+    &-submenu-arrow {
+      &::after,
+      &::before {
+        background-color: @aside-menu-text-color !important;
       }
     }
   }

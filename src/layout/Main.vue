@@ -3,7 +3,7 @@
     <Header />
     <div class="main-body">
       <Menu />
-      <div class="main-content"><router-view /></div>
+      <div class="main-content"><router-view> </router-view></div>
     </div>
   </div>
 </template>

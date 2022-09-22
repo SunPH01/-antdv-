@@ -1,5 +1,8 @@
 <template>
-  <excel-import
+  <div>
+    <a-button type="primary" plain size="mini">导出</a-button>
+  </div>
+  <!-- <excel-import
     :set-export-data="setExportData"
     :get-import-data="getImportData"
   >
@@ -9,7 +12,7 @@
     <template v-slot:import>
       <a-button type="primary" plain size="mini">导入</a-button>
     </template>
-  </excel-import>
+  </excel-import> -->
 </template>
 <script lang="ts">
 // import ExcelImport from "@/components/ExcelImport.vue";

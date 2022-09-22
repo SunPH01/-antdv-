@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import type { RouteRecordRaw } from "vue-router";
+import HomeView from "@/views/HomeView.vue";
+import AsyncRoutes from "@/router/routes";
 
 const routes: any[] = [
   {
@@ -7,20 +9,21 @@ const routes: any[] = [
     name: "Home",
     component: HomeView,
   },
-  {
-    path: "/antdv/theme",
-    name: "AntdvTheme",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/antdv/Theme.vue"),
-  },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory("/"),
   routes,
 });
+
+export const buildRoutes = () => {
+  console.log(AsyncRoutes);
+  AsyncRoutes.forEach((route) => {
+    router.addRoute(route as unknown as RouteRecordRaw);
+  });
+  console.log(router.getRoutes());
+};
+
+buildRoutes();
 
 export default router;

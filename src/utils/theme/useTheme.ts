@@ -1,6 +1,6 @@
 import { themeConfig } from "./model";
 import { useAppStore } from "@/store/modules/app";
-import { ConfigProvider } from "ant-design-vue";
+// import { ConfigProvider } from "ant-design-vue";
 
 // 修改样式变量值
 const changeStyle = (obj: Object) => {
@@ -16,9 +16,5 @@ export const useTheme = (themeName: string) => {
   appStore.setThemeName(themeName);
   const theme = themeConfig[themeName];
   changeStyle(theme);
-  ConfigProvider.config({
-    theme: {
-      primaryColor: theme.primaryColor,
-    },
-  });
+  return theme?.primaryColor;
 };

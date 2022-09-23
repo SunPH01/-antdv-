@@ -23,7 +23,8 @@ export const useAppStore = defineStore("app", {
       return this.menus || [];
     },
     getCurrentMenu(): Menu {
-      return this.currentMenu || {};
+      const locaMenu = localStorage.getItem("currentMenu");
+      return this.currentMenu || JSON.parse(locaMenu || "{}");
     },
   },
   actions: {
@@ -36,6 +37,7 @@ export const useAppStore = defineStore("app", {
     },
     setCurrentMenu(payload: Menu) {
       this.currentMenu = payload;
+      localStorage.setItem("currentMenu", JSON.stringify(payload));
     },
   },
 });

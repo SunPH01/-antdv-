@@ -16,5 +16,5 @@ export const useTheme = (themeName: string) => {
   appStore.setThemeName(themeName);
   const theme = themeConfig[themeName];
   changeStyle(theme);
-  return theme?.primaryColor;
+  return theme;
 };

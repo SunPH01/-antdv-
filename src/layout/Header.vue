@@ -12,7 +12,7 @@
       >
         <a-menu-item v-for="menu in Menu" :key="menu.value">
           <template #icon>
-            <svg-icon v-if="menu.icon" :name="menu.icon" />
+            <Icon v-if="menu.icon" :name="menu.icon" size="20" />
           </template>
           <a>{{ menu.name }}</a>
         </a-menu-item>
@@ -21,14 +21,14 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref, watch, onMounted } from "vue";
 import { useAppStore } from "@/store/modules/app";
 import Menu, { MenuItem } from "@/assets/file/menu";
 import { findNode } from "@/utils/treeHelper";
 export default defineComponent({
   setup() {
-    const selectedKeys = ref([""]);
     const appStore = useAppStore();
+    const selectedKeys = ref([""]);
     const setCurrentMenu = () => {
       const currentMenu = findNode(
         Menu || [],
@@ -36,6 +36,10 @@ export default defineComponent({
       );
       appStore.setCurrentMenu(currentMenu);
     };
+    onMounted(() => {
+      const selectedKey = appStore.getCurrentMenu.value;
+      selectedKeys.value = selectedKey ? [selectedKey] : selectedKeys.value;
+    });
     watch(selectedKeys, () => {
       setCurrentMenu();
     });
@@ -53,9 +57,33 @@ export default defineComponent({
   display: flex;
   align-items: center;
   color: @white;
-  img {
-    width: 30px;
-    height: 30px;
+  .left {
+    min-width: 164px;
+    max-width: 164px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .header {
+    flex: 1;
+  }
+  .ant-menu {
+    background: transparent;
+    margin-right: 5px;
+    :deep(.ant-menu-item) {
+      margin-right: 5px;
+      &.ant-menu-item-selected,
+      &.ant-menu-item-active {
+        background-color: @top-menu-active-bg-color;
+      }
+      .ant-menu-item-icon,
+      .ant-menu-title-content {
+        a {
+          color: #fff;
+        }
+      }
+    }
   }
 }
 </style>

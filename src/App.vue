@@ -2,7 +2,6 @@
   <a-config-provider :locale="locale">
     <router-view />
   </a-config-provider>
-  <!-- <Main /> -->
 </template>
 
 <script lang="ts">
@@ -16,11 +15,10 @@ import "dayjs/locale/zh-cn";
 dayjs.locale("zh-cn");
 
 export default defineComponent({
-  // components: { Main },
   setup() {
     const appStore = useAppStore();
     onMounted(() => {
-      const primaryColor = useTheme(appStore.getThemeName);
+      const { primaryColor } = useTheme(appStore.getThemeName);
       ConfigProvider.config({
         theme: {
           primaryColor,
@@ -42,18 +40,5 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   height: 100%;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

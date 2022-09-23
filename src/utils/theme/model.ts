@@ -12,7 +12,11 @@ export const themeConfig = {
     asideSubmenuBorderColor: "#0B1D3E",
     asideMenuHoverBg: "#4b5d7e",
     asideMenuExpandBg: "#0B1D3E",
-    // primaryColor: "#005CB8",
+    primaryColor: "#005CB8",
+    errorColor: "#ff4d4f",
+    warningColor: "#faad14",
+    successColor: "#52c41a",
+    infoColor: "#1890ff",
   },
   light: {
     // menu
@@ -27,7 +31,11 @@ export const themeConfig = {
     asideSubmenuBorderColor: "transparent",
     asideMenuHoverBg: "#E6F8FF",
     asideMenuExpandBg: "#F6F7FA",
-    // primaryColor: "#1C8DFD",
+    primaryColor: "#1C8DFD",
+    errorColor: "#f5dbdb",
+    warningColor: "#f1c773",
+    successColor: "#b5f396",
+    infoColor: "#98c5ef",
   },
 };
 

@@ -25,8 +25,12 @@ export default defineComponent({
 .main-body {
   flex: 1;
   display: flex;
+  background-color: @background-color-base;
   .main-content {
     flex: 1;
+    margin: 16px;
+    padding: 16px;
+    background-color: @component-background;
   }
 }
 </style>

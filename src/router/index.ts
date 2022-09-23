@@ -21,7 +21,6 @@ export const buildRoutes = () => {
   AsyncRoutes.forEach((route) => {
     router.addRoute(route as unknown as RouteRecordRaw);
   });
-  console.log(router.getRoutes());
 };
 
 buildRoutes();
